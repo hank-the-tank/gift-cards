@@ -2,7 +2,6 @@ from typing import List
 
 import uvicorn
 from fastapi import FastAPI
-from sqlalchemy import select
 
 from app.models import Order
 
@@ -15,28 +14,30 @@ app = FastAPI()
 session = Session()
 
 
-@app.get('/')
+@app.get("/")
 def index():
     return dict(data="hello world")
 
 
-@app.get('/order/{id}')
+@app.get("/order/{id}")
 def view_order(id: str):
     return dict(data=id)
 
 
-@app.get('/orders')
+@app.get("/orders")
 def view_orders():
     orders: List[Order] = session.query(Order).all()
 
     return dict(data=orders)
+
+
 #
 
 
-@app.post('/order')
+@app.post("/order")
 def create_order(request: OrderType):
     return dict(data=Order)
 
 
-if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=8001)
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8001)

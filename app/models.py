@@ -7,7 +7,7 @@ from uuid import uuid4
 
 
 class Order(Base):
-    __tablename__ = 'order'
+    __tablename__ = "order"
 
     id = Column(String, primary_key=True, default=uuid4())
     created = Column(DateTime, default=datetime.datetime.utcnow)

@@ -18,3 +18,7 @@ $ uvicorn app:app --reload // localhost: 8000
 ```
 $ python3 app.py // http://127.0.0.1:8001
 ```
+# Reformat the code
+```
+$ black . 
+```
