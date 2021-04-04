@@ -8,10 +8,22 @@ from app.database import Base
 
 class Order(Base):
     __tablename__ = "order"
-    # create a ufnction for generating uuid
+
     id = sa.Column(
         GUID, primary_key=True, server_default=GUID_SERVER_DEFAULT_POSTGRESQL
     )
     created = sa.Column(sa.DateTime, default=datetime.datetime.utcnow)
     code = sa.Column(sa.String)
     customer = sa.Column(sa.String)
+
+
+class User(Base):
+    __tablename__ = "user"
+
+    id = sa.Column(
+        GUID, primary_key=True, server_default=GUID_SERVER_DEFAULT_POSTGRESQL
+    )
+    created = sa.Column(sa.DateTime, default=datetime.datetime.utcnow)
+    name = sa.Column(sa.String)
+    email = sa.Column(sa.String)
+    password = sa.Column(sa.String)
