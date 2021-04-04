@@ -3,7 +3,15 @@ import datetime
 import sqlalchemy as sa
 
 from fastapi_utils.guid_type import GUID, GUID_SERVER_DEFAULT_POSTGRESQL
-from app.database import Base
+from app.database import Base, Session
+
+
+def db_connection():
+    session = Session()
+    try:
+        yield session
+    finally:
+        session.close()
 
 
 class Order(Base):
