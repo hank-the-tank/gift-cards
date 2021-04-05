@@ -5,12 +5,13 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from app import Session, schemas, Hash
 
 from app import models as m
+from app import database as db
 
-router = APIRouter(prefix="/users", tags=["user"])
+router = APIRouter(prefix="/users", tags=["Users"])
 
 
 @router.get("/{id}", response_model=schemas.UserResponseType)
-def view_user(id: UUID, db: Session = Depends(m.db_connection)):
+def view_user(id: UUID, db: Session = Depends(db.db_connection)):
     user = db.query(m.User).filter(m.User.id == id).first()
     if not user:
         raise HTTPException(
@@ -22,7 +23,7 @@ def view_user(id: UUID, db: Session = Depends(m.db_connection)):
 @router.post("/", response_model=schemas.UserResponseType)
 def create_user(
     request: schemas.UserRequestType,
-    db: Session = Depends(m.db_connection),
+    db: Session = Depends(db.db_connection),
 ):
     new_user = m.User(
         name=request.name,

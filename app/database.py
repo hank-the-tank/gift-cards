@@ -9,3 +9,11 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL)
 Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
+
+
+def db_connection():
+    session = Session()
+    try:
+        yield session
+    finally:
+        session.close()
