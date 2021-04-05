@@ -12,7 +12,7 @@ $ pip freeze -r requirements.txt
 ```
 3. Run the app in development mode
 ```
-$ uvicorn app:app --reload // localhost: 8000
+$ uvicorn app:app --reload // 127.0.0.1: 8000
 ```
 # Debug mode
 ```
