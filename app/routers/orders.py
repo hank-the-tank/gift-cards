@@ -1,7 +1,7 @@
 from typing import List
 from uuid import UUID
 
-from fastapi import APIRouter, status, Response, Depends, HTTPException
+from fastapi import APIRouter, status, Depends, HTTPException
 from app import models as m
 from app import database as db
 from app import schemas, Session
