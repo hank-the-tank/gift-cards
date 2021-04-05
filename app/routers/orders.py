@@ -30,7 +30,10 @@ def create_order(
             status_code=status.HTTP_403_FORBIDDEN, detail="Order already existed"
         )
     else:
-        new_order: m.Order = m.Order(customer=request.customer, code=request.code)
+        new_order: m.Order = m.Order(
+            code=request.code,
+            customer_id="b0e484d5-0bd9-4c81-8722-209cc5ff7301",
+        )
         db.add(new_order)
         db.commit()
         db.refresh(new_order)

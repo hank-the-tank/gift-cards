@@ -7,7 +7,7 @@ from app import models, schemas
 
 from app.hashing import Hash
 
-from app.routers import users, orders
+from app.routers import users, orders, customers
 
 models.Base.metadata.create_all(engine)
 app = FastAPI()
@@ -19,6 +19,7 @@ def index():
 
 
 app.include_router(users.router)
+app.include_router(customers.router)
 app.include_router(orders.router)
 
 
