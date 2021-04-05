@@ -4,10 +4,11 @@ import uvicorn
 
 from app.database import engine, Session
 from app import models, schemas
+from app import authentication
 
 from app.hashing import Hash
 
-from app.routers import users, orders, customers, authentication
+from app.routers import users, orders, customers
 
 models.Base.metadata.create_all(engine)
 app = FastAPI()
