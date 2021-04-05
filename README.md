@@ -2,17 +2,9 @@
 This is an app to help The Good Registry to manage their orders
 
 # How to start
-1. Basic set up for local environment with Docker
+1. Run app and db in the container
 ```
-$ docker-compose up
-```
-2. Install packages
-```
-$ pip freeze -r requirements.txt
-```
-3. Run the app in development mode
-```
-$ uvicorn app:app --reload // 127.0.0.1: 8000
+$ docker-compose up // http://localhost:8000
 ```
 # Debug mode
 ```
