@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
   postgres-server:
     image: "postgres"
@@ -16,7 +16,15 @@ services:
     restart: always
     ports:
       - 9000:8080
-  my-redis:
-    image: "redis:alpine"
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "6379:6379"
+      - 8000:8000
+    volumes:
+      - .:/app
+    environment:
+      ENVIRONMENT: production
+    depends_on:
+      - postgres-server

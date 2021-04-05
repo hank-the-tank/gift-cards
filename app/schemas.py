@@ -52,12 +52,10 @@ class CustomerResponseType(BaseModel):
 
 class OrderRequestType(OrderBase):
     code: str
-    # customer: CustomerRequestType
 
 
 class OrderResponseType(OrderBase):
     code: str
-    customer: CustomerResponseType
 
     class Config:
         orm_mode = True
