@@ -29,6 +29,7 @@ def create_order(
     db: Session = Depends(db.db_connection),
     current_user: schemas.UserRequestType = Depends(oauth2.get_current_user),
 ):
+    customer = db.query(m.Customer).first()
     if db.query(m.Order).filter_by(code=request.code).first():
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN, detail="Order already existed"
@@ -36,7 +37,7 @@ def create_order(
     else:
         new_order: m.Order = m.Order(
             code=request.code,
-            customer_id="b0e484d5-0bd9-4c81-8722-209cc5ff7301",
+            customer_id=customer.id,
         )
         db.add(new_order)
         db.commit()

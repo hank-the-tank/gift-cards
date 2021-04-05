@@ -22,7 +22,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     return encoded_jwt
 
 
-def verify_token(token: str, credentials_exception: HTTPException) -> schemas.TokenData:
+def verify_token(token: str, credentials_exception: HTTPException):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         email: str = payload.get("sub")

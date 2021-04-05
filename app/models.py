@@ -32,7 +32,7 @@ class Order(Base):
     created = sa.Column(sa.DateTime, default=datetime.datetime.utcnow)
     code = sa.Column(sa.String)
 
-    customer_id = sa.Column(UUID, ForeignKey("customer.id"))
+    customer_id = sa.Column(GUID, ForeignKey("customer.id"))
     customer = relationship("Customer", back_populates="orders")
 
 
