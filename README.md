@@ -1,6 +1,5 @@
 # Intro
-This is an app to help The Good Registry to manage their orders
-
+This is a docker set up for starting a fastapi project with jwt authentication.
 # How to start
 1. Run app and db in the container
 ```
